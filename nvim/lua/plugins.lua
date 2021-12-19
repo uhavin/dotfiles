@@ -94,4 +94,10 @@ return require('packer').startup(function(use)
     -- config = function() require('plugins.lualine') end,
   })
 
+  -- Git
+  use 'mhinz/vim-signify'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+  use 'junegunn/gv.vim'
+
 end)
