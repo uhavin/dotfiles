@@ -1,6 +1,7 @@
 local HOME = vim.fn.expand("$HOME")
 
 -- Visual
+vim.o.colorcolumn = '89,120'
 vim.o.conceallevel = 0
 vim.o.cmdheight = 1
 vim.o.pumheight = 10
@@ -44,12 +45,7 @@ vim.o.undofile = true
 vim.o.undodir = HOME .. "/.local/var/nvim/undo"
 vim.o.wrap = false
 
-
--- Disable default plugins
--- vim.g.loaded_netrwPlugin = false
-
--- Providers
--- vim.g.python3_host_prog = '/home/milton/software/miniconda/envs/pynvim/bin/python'
+vim.g.python3_host_prog = HOME .. "/.pyenv/versions/nvim/bin/python"
 
 -- Disable inline error messages
 vim.diagnostic.config {
