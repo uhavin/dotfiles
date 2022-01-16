@@ -82,15 +82,6 @@ return require("packer").startup(function(use)
 		run = ":TSUpdate",
 	})
 
-	-- formatting
-	use({
-		"sbdchd/neoformat",
-		cmd = { "Neoformat" },
-		config = function()
-			require("plugins.neoformat")
-		end,
-	})
-
 	-- NvimTree
 	use({
 		"kyazdani42/nvim-tree.lua",
