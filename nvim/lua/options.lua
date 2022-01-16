@@ -1,17 +1,17 @@
 local HOME = vim.fn.expand("$HOME")
 
 -- Visual
-vim.o.colorcolumn = '89,120'
+vim.o.colorcolumn = "89,120"
 vim.o.conceallevel = 0
 vim.o.cmdheight = 1
 vim.o.pumheight = 10
-vim.o.showmode = true     
+vim.o.showmode = true
 vim.o.showtabline = 2 -- Always show tabline
 vim.o.title = true
 vim.o.termguicolors = true -- Use true colors, required for some plugins
 vim.wo.number = true
 vim.wo.relativenumber = false
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 vim.wo.cursorline = true
 
 -- Behaviour
@@ -28,7 +28,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.scrolloff = 12 -- Minimum offset in lines to screen borders
 vim.o.sidescrolloff = 8
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- Vim specific
 vim.o.hidden = true -- Do not save when switching buffers
@@ -48,8 +48,8 @@ vim.o.wrap = false
 vim.g.python3_host_prog = HOME .. "/.pyenv/versions/nvim/bin/python"
 
 -- Disable inline error messages
-vim.diagnostic.config {
-  virtual_text = false,
-  underline = false, -- Keep error underline
-  signs = true, -- Keep gutter signs
-}
+vim.diagnostic.config({
+	virtual_text = false,
+	underline = false, -- Keep error underline
+	signs = true, -- Keep gutter signs
+})
