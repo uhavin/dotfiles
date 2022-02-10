@@ -33,7 +33,7 @@ return require("packer").startup(function(use)
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("plugins.indent-blankline")
+			require("plugins.indent-blankline-config")
 		end,
 	})
 	use({ "RRethy/vim-illuminate" })
@@ -42,7 +42,7 @@ return require("packer").startup(function(use)
 	use({
 		"mbbill/undotree",
 		config = function()
-			require("plugins.undotree")
+			require("plugins.undotree-config")
 		end,
 	})
 
@@ -53,7 +53,7 @@ return require("packer").startup(function(use)
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("plugins.lspconfig")
+			require("plugins.nvim-lspconfig-config")
 		end,
 	})
 
@@ -61,7 +61,7 @@ return require("packer").startup(function(use)
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
 		config = function()
-			require("plugins.null-ls")
+			require("plugins.null-ls-config")
 		end,
 	})
 
@@ -79,7 +79,7 @@ return require("packer").startup(function(use)
 			"saadparwaiz1/cmp_luasnip",
 		},
 		config = function()
-			require("plugins.cmp")
+			require("plugins.cmp-config")
 		end,
 	})
 	-- snippets
@@ -113,7 +113,7 @@ return require("packer").startup(function(use)
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("plugins.nvim-tree")
+			require("plugins.nvim-tree-config")
 		end,
 	})
 
@@ -138,7 +138,7 @@ return require("packer").startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		requires = "nvim-lua/plenary.nvim",
 		config = function()
-			require("plugins.gitsigns")
+			require("plugins.gitsigns-config")
 		end,
 	})
 	use("tpope/vim-fugitive")
@@ -165,7 +165,7 @@ return require("packer").startup(function(use)
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
-			require("plugins.nvim-autopairs")
+			require("plugins.nvim-autopairs-config")
 		end,
 	})
 end)
