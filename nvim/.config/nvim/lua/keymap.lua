@@ -23,10 +23,14 @@ inoremap_expr("<S-Tab>", "v:lua.smart_shift_tab()")
 -- nvim tree
 nnoremap("<Leader>n", ":NvimTreeToggle<CR>")
 nnoremap("<Leader>.", ":NvimTreeFindFile<CR>")
--- telescope
-nnoremap("<Leader>;", ":Telescope find_files<cr>")
-nnoremap("<Leader>e", ":Telescope buffers<cr>")
-nnoremap("<Leader>fg", ":Telescope live_grep<cr>")
+-- -- telescope
+nnoremap("<Leader>;", ":FzfLua files<cr>")
+nnoremap("<Leader>e", ":FzfLua buffers<cr>")
+nnoremap("<Leader>fg", ":FzfLua live_grep<cr>")
 
 -- winresizer
 nnoremap("<Leader>w", ":WinResizerStartResize<cr>")
+
+-- harpoon marks
+nnoremap("<leader>ma", ":lua require('harpoon.mark').add_file()<CR>")
+nnoremap("<leader>mm", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")

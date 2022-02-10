@@ -5,7 +5,7 @@ local lspconfig = require("lspconfig")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local custom_attach = function(_, bufnr)
+local custom_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -31,12 +31,14 @@ local custom_attach = function(_, bufnr)
 	buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+	buf_set_keymap("n", "<space>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	buf_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 	buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+	require("illuminate").on_attach(client)
 end
 local custom_attach_no_formatting = function(client, bufnr)
 	custom_attach(client, bufnr)
@@ -48,8 +50,8 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 local language_servers = {
 	"cssls",
 	"dockerls",
@@ -90,29 +92,15 @@ lspconfig["sumneko_lua"].setup({
 local pyenv_version_nvim = HOME .. "/.pyenv/versions/nvim"
 local project_python = HOME .. "/.pyenv/shims/python"
 
-lspconfig["pylsp"].setup({
-	cmd = { pyenv_version_nvim .. "/bin/python", "-m", "pylsp" }, -- venv with python lsp installed
+lspconfig["jedi_language_server"].setup({
+	cmd = { pyenv_version_nvim .. "/bin/jedi-language-server" }, -- venv with python lsp installed
 	on_attach = custom_attach_no_formatting,
-	env_path = project_python, -- python venv to work on
+	-- env_path = project_python, -- python venv to work on
 	capabilities = capabilities,
-	settings = {
-		pylsp = {
-			plugins = {
-				jedi_completion = { fuzzy = true },
-				pycodestyle = { enabled = false },
-				yapf = { enabled = false },
-				rope = { enabled = false },
-				autopep8 = { enabled = false },
-				flake8 = { enabled = false },
-				pyflakes = { enabled = false },
-				pylint = { enabled = false },
-				isort = { enabled = false },
-				black = { enabled = false },
-				pylsp_black = { enabled = false },
-			},
-		},
-	},
 	flags = {
 		debounce_text_changes = 150,
 	},
 })
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })

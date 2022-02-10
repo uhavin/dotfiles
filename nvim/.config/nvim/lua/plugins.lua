@@ -19,10 +19,16 @@ return require("packer").startup(function(use)
 	})
 
 	-- Colors
-	use("ayu-theme/ayu-vim")
-	use("cormacrelf/vim-colors-github")
+	-- Treesitter supported, dark and light variant throuhg vim bg=
+	use("sainnhe/edge")
 	use("Mofiqul/vscode.nvim")
-
+	use("rmehri01/onenord.nvim")
+	use("dracula/vim")
+	use("rose-pine/neovim")
+	use("mhartington/oceanic-next")
+	use("rebelot/kanagawa.nvim")
+	use("fenetikm/falcon")
+	use("marko-cerovac/material.nvim")
 	-- Indent guides
 	use({
 		"lukas-reineke/indent-blankline.nvim",
@@ -30,6 +36,7 @@ return require("packer").startup(function(use)
 			require("plugins.indent-blankline")
 		end,
 	})
+	use({ "RRethy/vim-illuminate" })
 
 	-- History
 	use({
@@ -67,17 +74,36 @@ return require("packer").startup(function(use)
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lua",
+			-- lsp menu symbols
+			"onsails/lspkind-nvim",
+			"saadparwaiz1/cmp_luasnip",
 		},
 		config = function()
 			require("plugins.cmp")
 		end,
+	})
+	-- snippets
+	use({
+		"L3MON4D3/LuaSnip",
+		config = function()
+			require("plugins.luasnip-config")
+		end,
+	})
+	use({ "rafamadriz/friendly-snippets" })
+
+	use({
+		"danymat/neogen",
+		config = function()
+			require("plugins.neogen-config")
+		end,
+		requires = "nvim-treesitter/nvim-treesitter",
 	})
 
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
-			require("plugins.treesitter")
+			require("plugins.treesitter-config")
 		end,
 		run = ":TSUpdate",
 	})
@@ -88,33 +114,22 @@ return require("packer").startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("plugins.nvim-tree")
-		end, -- Must add this manually
-	})
-
-	-- Telescope
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
-		config = function()
-			require("plugins.telescope")
 		end,
 	})
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-	-- bufferline
+	-- Fuzzy finding
+	use({ "junegunn/fzf", run = "./install --bin" })
 	use({
-		"akinsho/nvim-bufferline.lua",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("plugins.bufferline")
-		end,
-		event = "BufWinEnter",
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		requires = { "kyazdani42/nvim-web-devicons" },
 	})
+
 	-- statusline
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = function()
-			require("plugins.lualine")
+			require("plugins.lualine-config")
 		end,
 	})
 
@@ -135,6 +150,12 @@ return require("packer").startup(function(use)
 	use("simeji/winresizer") -- window resizer
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
+
+	use({
+		"ThePrimeagen/harpoon",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && yarn install",
@@ -145,6 +166,6 @@ return require("packer").startup(function(use)
 		"windwp/nvim-autopairs",
 		config = function()
 			require("plugins.nvim-autopairs")
-		end, -- Must add this manually
+		end,
 	})
 end)
