@@ -21,14 +21,12 @@ return require("packer").startup(function(use)
 	-- Colors
 	-- Treesitter supported, dark and light variant throuhg vim bg=
 	use("sainnhe/edge")
-	use("Mofiqul/vscode.nvim")
-	use("rmehri01/onenord.nvim")
-	use("dracula/vim")
 	use("rose-pine/neovim")
-	use("mhartington/oceanic-next")
+	use("navarasu/onedark.nvim")
+	-- dark only
 	use("rebelot/kanagawa.nvim")
-	use("fenetikm/falcon")
-	use("marko-cerovac/material.nvim")
+	use("dracula/vim")
+
 	-- Indent guides
 	use({
 		"lukas-reineke/indent-blankline.nvim",
@@ -107,6 +105,7 @@ return require("packer").startup(function(use)
 		end,
 		run = ":TSUpdate",
 	})
+	use({ "nvim-treesitter/playground" })
 
 	-- NvimTree
 	use({
@@ -168,4 +167,5 @@ return require("packer").startup(function(use)
 			require("plugins.nvim-autopairs-config")
 		end,
 	})
+	use("edgedb/edgedb-vim")
 end)
