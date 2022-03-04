@@ -1,6 +1,5 @@
 [tool.poetry]
 name = "nvim"
-version = "0.1.0"
 description = ""
 authors = ["Niels van Huijstee <niels@huijs.net>"]
 
