@@ -1,14 +1,13 @@
 local HOME = vim.fn.expand("$HOME")
 
 -- Visual
-vim.g.markdown_fenced_languages = {'python', 'bash', 'javascript', 'lua'}
-vim.o.background = 'dark'
+vim.g.markdown_fenced_languages = {'python', 'bash', 'javascript', 'lua', 'dosini'}
 vim.o.cmdheight = 1
 vim.o.colorcolumn = "89,121"
 vim.o.conceallevel = 0
 vim.o.pumheight = 100
 vim.o.showmode = true
-vim.o.showtabline = 0 -- do not show the tabline
+vim.o.showtabline = 1 -- do not show the tabline
 vim.o.termguicolors = true -- Use true colors, required for some plugins
 vim.o.title = true
 vim.wo.cursorline = true

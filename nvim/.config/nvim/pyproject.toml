@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "nvim"
-description = ""
+version = "0.0.0"
+description = "Neovim configuration Python dependencies."
 authors = ["Niels van Huijstee <niels@huijs.net>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 pynvim = "^0.4.3"
 
-python-lsp-server = "^1.3.3"
 mypy = "^0.931"
 black = "^21.12b0"
 isort = "^5.10.1"

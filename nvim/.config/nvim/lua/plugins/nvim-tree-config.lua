@@ -23,4 +23,7 @@ require("nvim-tree").setup({
             ".python-version",
 		},
 	},
+    git = {
+        ignore = false,
+    }
 })

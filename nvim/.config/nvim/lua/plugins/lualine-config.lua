@@ -1,3 +1,5 @@
+local gps = require("nvim-gps")
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -9,13 +11,24 @@ require("lualine").setup({
 	},
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { "filename" },
-		lualine_x = {
+		lualine_b = {
+			{ "branch", icon = "" },
 			{
-				"fileformat",
-				symbols = { unix = "unix", dos = "dos", mac = "mac" },
+				"diff",
+				diff_color = {
+					added = { fg = "#009933" },
+					modified = { fg = "#0099ff" },
+					removed = { fg = "#cc3300" },
+				},
 			},
+		},
+		lualine_c = {
+			"filename",
+			{ gps.get_location, cond = gps.is_available },
+		},
+		lualine_x = {
+			"diagnostics",
+			"fileformat",
 			"encoding",
 			"filetype",
 		},
@@ -30,13 +43,18 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
-    tabline = {
-      -- lualine_a = {'buffers'},
-      -- lualine_b = {},
-      -- lualine_c = {},
-      -- lualine_x = {},
-      -- lualine_y = {},
-      -- lualine_z = {'tabs'}
-    },
-	extensions = {},
+	tabline = {
+		-- Nah.
+		-- lualine_a = {'buffers'},
+		-- lualine_b = {},
+		-- lualine_c = {},
+		-- lualine_x = {},
+		-- lualine_y = {},
+		-- lualine_z = {'tabs'}
+	},
+	extensions = {
+		"nvim-tree",
+		"fugitive",
+		"symbols-outline",
+	},
 })

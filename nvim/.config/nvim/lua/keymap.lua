@@ -32,5 +32,8 @@ nnoremap("<Leader>fg", ":FzfLua live_grep<cr>")
 nnoremap("<Leader>w", ":WinResizerStartResize<cr>")
 
 -- harpoon marks
-nnoremap("<leader>ha", ":lua require('harpoon.mark').add_file()<CR>")
-nnoremap("<leader>hm", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+nnoremap("<leader>hm", ":lua require('harpoon.mark').add_file()<CR>")
+nnoremap("<leader>hh", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+
+nnoremap("<Leader>>", ":Gitsigns next_hunk<CR>")
+nnoremap("<Leader><", ":Gitsigns previous_hunk<CR>")

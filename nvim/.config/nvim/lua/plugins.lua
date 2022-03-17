@@ -20,12 +20,11 @@ return require("packer").startup(function(use)
 
 	-- Colors
 	-- Treesitter supported, dark and light variant throuhg vim bg=
-	use("sainnhe/edge")
-	use("rose-pine/neovim")
-	use("navarasu/onedark.nvim")
-	-- dark only
-	use("rebelot/kanagawa.nvim")
-	use("dracula/vim")
+	use("savq/melange")
+    use("NTBBloodbath/doom-one.nvim")
+	-- Support for dark-light via custom command/env
+	use("EdenEast/nightfox.nvim")
+	use("projekt0n/github-nvim-theme")
 
 	-- Indent guides
 	use({
@@ -80,6 +79,20 @@ return require("packer").startup(function(use)
 			require("plugins.cmp-config")
 		end,
 	})
+	use({
+		"SmiteshP/nvim-gps",
+		requires = "nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("plugins.nvim-gps-config")
+		end,
+	})
+	use({
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			require("plugins.symbols-outline-config")
+		end,
+	})
+
 	-- snippets
 	use({
 		"L3MON4D3/LuaSnip",
