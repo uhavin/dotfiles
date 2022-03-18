@@ -27,7 +27,7 @@ symbol = ""
 
 [git_status]
 style = "none"
-format = '\[[$all_status ](green dimmed)[ $ahead_behind](red dimmed)\] '
+format = '\[ [$all_status](green dimmed) [ $ahead_behind](red dimmed)\] '
 ahead = "+${count}"
 diverged = "+$ahead_count-$behind_count"
 behind = "-${count}"
