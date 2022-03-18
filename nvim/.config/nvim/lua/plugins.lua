@@ -22,9 +22,12 @@ return require("packer").startup(function(use)
 	-- Treesitter supported, dark and light variant throuhg vim bg=
 	use("savq/melange")
     use("NTBBloodbath/doom-one.nvim")
+    use("sainnhe/gruvbox-material")
+    use("sainnhe/everforest")
 	-- Support for dark-light via custom command/env
 	use("EdenEast/nightfox.nvim")
 	use("projekt0n/github-nvim-theme")
+
 
 	-- Indent guides
 	use({

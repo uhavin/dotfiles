@@ -1,2 +1,6 @@
+-- vim.g.everforest_background = "hard"
+-- vim.g.gruvbox_material_palette = "mix"
+-- vim.g.gruvbox_material_background = "medium"
 
-vim.cmd('colorscheme github_light_colorblind')
+vim.o.background = "light"
+vim.cmd("colorscheme dayfox")

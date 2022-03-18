@@ -1,5 +1,7 @@
 local gps = require("nvim-gps")
 
+local foo = ""
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -12,6 +14,38 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = {
+			"diagnostics",
+        },
+		lualine_c = {
+			{ gps.get_location, cond = gps.is_available },
+		},
+		lualine_x = {
+			"filetype",
+			"filename",
+			"encoding",
+			"fileformat",
+		},
+		lualine_y = {
+			{
+				"diff",
+				diff_color = {
+					added = { fg = "#008822" },
+					modified = { fg = "#0077ee" },
+					removed = { fg = "#cc3300" },
+				},
+			},
+			{ "branch", icon = "" },
+		},
+		lualine_z = {
+			"location",
+		},
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { "filename" },
+		lualine_x = {},
+		lualine_y = {
 			{ "branch", icon = "" },
 			{
 				"diff",
@@ -22,26 +56,7 @@ require("lualine").setup({
 				},
 			},
 		},
-		lualine_c = {
-			"filename",
-			{ gps.get_location, cond = gps.is_available },
-		},
-		lualine_x = {
-			"diagnostics",
-			"fileformat",
-			"encoding",
-			"filetype",
-		},
-		lualine_y = { "progress" },
 		lualine_z = { "location" },
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
 	},
 	tabline = {
 		-- Nah.
