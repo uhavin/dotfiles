@@ -2,7 +2,19 @@ vim.lsp.set_log_level("info")
 
 local HOME = vim.fn.expand("$HOME")
 local lspconfig = require("lspconfig")
+local symbols = require("symbols")
 
+local signs = {
+	Error = symbols.Diagnostics.Error,
+	Hint = symbols.Diagnostics.Hint,
+	Info = symbols.Diagnostics.Info,
+	Warn = symbols.Diagnostics.Warning,
+}
+
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local custom_attach = function(client, bufnr)
@@ -95,7 +107,7 @@ local project_python = HOME .. "/.pyenv/shims/python"
 lspconfig["jedi_language_server"].setup({
 	cmd = { pyenv_version_nvim .. "/bin/jedi-language-server" }, -- venv with python lsp installed
 	on_attach = custom_attach_no_formatting,
-	-- env_path = project_python, -- python venv to work on
+	env_path = project_python, -- python venv to work on
 	capabilities = capabilities,
 	flags = {
 		debounce_text_changes = 150,

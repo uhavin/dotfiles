@@ -1,5 +1,4 @@
-lspkind = require("lspkind")
-local fn = vim.fn
+local lspkind = require("lspkind")
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
@@ -74,6 +73,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
+		{ name = "emoji" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "spell" },

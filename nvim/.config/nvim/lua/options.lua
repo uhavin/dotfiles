@@ -6,24 +6,23 @@ vim.o.cmdheight = 1
 vim.o.colorcolumn = "89,121"
 vim.o.conceallevel = 0
 vim.o.pumheight = 100
-vim.o.showmode = true
+vim.o.showmode = false
 vim.o.showtabline = 1 -- do not show the tabline
 vim.o.termguicolors = true -- Use true colors, required for some plugins
 vim.o.title = true
+vim.o.laststatus = 3  -- global statusline
 vim.wo.cursorline = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.signcolumn = "yes"
 
-
 -- Behaviour
-vim.o.ignorecase = true -- Ignore case when using lowercase in search
-vim.o.hlsearch = true
-
 vim.o.mouse = "a"
 vim.o.scrolloff = 6 -- Minimum offset in lines to screen borders
 vim.o.sidescrolloff = 8
 
+vim.o.hlsearch = true
+vim.o.ignorecase = true -- Ignore case when using lowercase in search
 vim.o.smartcase = true -- But don't ignore it when using upper case
 vim.o.smartindent = true
 vim.o.smarttab = true

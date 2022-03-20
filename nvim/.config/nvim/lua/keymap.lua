@@ -20,10 +20,10 @@ nnoremap("<leader>/", ":noh<cr>")
 inoremap_expr("<Tab>", "v:lua.smart_tab()")
 inoremap_expr("<S-Tab>", "v:lua.smart_shift_tab()")
 
--- nvim tree
+-- file tree
 nnoremap("<Leader>n", ":NvimTreeToggle<CR>")
 nnoremap("<Leader>.", ":NvimTreeFindFile<CR>")
--- -- telescope
+-- -- fuzzy finder
 nnoremap("<Leader>;", ":FzfLua files<cr>")
 nnoremap("<Leader>e", ":FzfLua buffers<cr>")
 nnoremap("<Leader>fg", ":FzfLua live_grep<cr>")
@@ -35,5 +35,10 @@ nnoremap("<Leader>w", ":WinResizerStartResize<cr>")
 nnoremap("<leader>hm", ":lua require('harpoon.mark').add_file()<CR>")
 nnoremap("<leader>hh", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
 
+-- next/previous git change.
 nnoremap("<Leader>>", ":Gitsigns next_hunk<CR>")
 nnoremap("<Leader><", ":Gitsigns previous_hunk<CR>")
+
+
+-- reload config
+nnoremap("<Leader>so", ":source ~/.config/nvim/init.lua<CR>")

@@ -1,6 +1,17 @@
 local gps = require("nvim-gps")
+local symbols = require("symbols")
 
-local foo = ""
+local diagnostic_colors = {} -- will use defaults when empty
+if vim.g.colors_name == "gruvbox-material" then
+	local background = vim.opt.background:get()
+	local configuration = vim.fn["gruvbox_material#get_configuration"]()
+	local palette = vim.fn["gruvbox_material#get_palette"](background, configuration.palette)
+
+	diagnostic_colors["error"] = { fg = palette.red[1] }
+	diagnostic_colors["warn"] = { fg = palette.orange[1] }
+	diagnostic_colors["info"] = { fg = palette.blue[1] }
+	diagnostic_colors["hint"] = { fg = palette.green[1] }
+end
 
 require("lualine").setup({
 	options = {
@@ -12,29 +23,59 @@ require("lualine").setup({
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { "mode" },
+		lualine_a = {
+			{
+				"mode",
+				fmt = function(str)
+					return str:sub(1, 1)
+				end,
+			},
+		},
 		lualine_b = {
-			"diagnostics",
-        },
+			{
+				"diagnostics",
+				symbols = {
+					error = symbols.Diagnostics.Error,
+					hint = symbols.Diagnostics.Hint,
+					info = symbols.Diagnostics.Info,
+					warn = symbols.Diagnostics.Warning,
+				},
+				diagnostics_color = diagnostic_colors,
+			},
+		},
 		lualine_c = {
 			{ gps.get_location, cond = gps.is_available },
 		},
 		lualine_x = {
-			"filetype",
+			{
+				"filetype",
+				icon_only = true,
+			},
 			"filename",
 			"encoding",
-			"fileformat",
+			{
+				"fileformat",
+				symbols = {
+					unix = symbols.OS.Linux,
+					dos = symbols.OS.Windows,
+					mac = symbols.OS.Mac,
+				},
+			},
 		},
 		lualine_y = {
 			{
+				"branch",
+				icon = symbols.Git.Branch,
+			},
+			{
 				"diff",
-				diff_color = {
-					added = { fg = "#008822" },
-					modified = { fg = "#0077ee" },
-					removed = { fg = "#cc3300" },
+				-- icon = symbols.Git.Compare,
+				symbols = {
+					added = symbols.Git.Added,
+					modified = symbols.Git.Modified,
+					removed = symbols.Git.Removed,
 				},
 			},
-			{ "branch", icon = "" },
 		},
 		lualine_z = {
 			"location",
@@ -46,15 +87,7 @@ require("lualine").setup({
 		lualine_c = { "filename" },
 		lualine_x = {},
 		lualine_y = {
-			{ "branch", icon = "" },
-			{
-				"diff",
-				diff_color = {
-					added = { fg = "#009933" },
-					modified = { fg = "#0099ff" },
-					removed = { fg = "#cc3300" },
-				},
-			},
+			{ "branch", icon = symbols.Git.Branch },
 		},
 		lualine_z = { "location" },
 	},
