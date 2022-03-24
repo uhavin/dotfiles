@@ -21,12 +21,13 @@ return require("packer").startup(function(use)
 	-- Colors
 	-- Treesitter supported, dark and light variant throuhg vim bg=
 	use("savq/melange")
-	use("NTBBloodbath/doom-one.nvim")
 	use("sainnhe/gruvbox-material")
 	use("sainnhe/everforest")
 	-- Support for dark-light via custom command/env
 	use("EdenEast/nightfox.nvim")
 	use("projekt0n/github-nvim-theme")
+	-- use({ "xeluxee/onedark.nvim", { branch = "fix-custom-colors" } })
+	use("navarasu/onedark.nvim")
 
 	-- Indent guides
 	use({
@@ -95,6 +96,7 @@ return require("packer").startup(function(use)
 			require("plugins.symbols-outline-config")
 		end,
 	})
+	use("liuchengxu/vista.vim")
 
 	-- snippets
 	use({
@@ -139,7 +141,8 @@ return require("packer").startup(function(use)
 		-- optional for icon support
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
-
+	-- execution
+	use("skywind3000/asyncrun.vim")
 	-- statusline
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -183,5 +186,16 @@ return require("packer").startup(function(use)
 			require("plugins.nvim-autopairs-config")
 		end,
 	})
-	use("edgedb/edgedb-vim")
+
+	-- syntax highlighters
+	use("peterhoeg/vim-qml")
+
+	-- database
+	use("tpope/vim-dadbod")
+	use({
+		"kristijanhusak/vim-dadbod-ui",
+		config = function()
+			require("plugins.vim-dadbod-ui-config")
+		end,
+	})
 end)

@@ -40,5 +40,7 @@ nnoremap("<Leader>>", ":Gitsigns next_hunk<CR>")
 nnoremap("<Leader><", ":Gitsigns previous_hunk<CR>")
 
 
--- reload config
-nnoremap("<Leader>so", ":source ~/.config/nvim/init.lua<CR>")
+-- database
+nnoremap("<Leader>db", ":DBUIToggle<CR>")
+nnoremap("<leader>qs", "<Plug>(DBUI_SaveQuery)")
+nnoremap("<leader>qe", "<Plug>(DBUI_ExecuteQuery)")

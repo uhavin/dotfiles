@@ -12,6 +12,7 @@ local active_pyenv_python = HOME .. "/.pyenv/shims/python"
 null_ls.setup({
 	diagnostics_format = "[#{s}|#{c}] #{m}",
 	sources = {
+		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.diagnostics.mypy.with({
 			command = run_from_nvim_pyenv("mypy"),
 			extra_args = { "--python-executable", active_pyenv_python },

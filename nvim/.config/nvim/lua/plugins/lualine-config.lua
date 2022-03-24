@@ -8,7 +8,7 @@ if vim.g.colors_name == "gruvbox-material" then
 	local palette = vim.fn["gruvbox_material#get_palette"](background, configuration.palette)
 
 	diagnostic_colors["error"] = { fg = palette.red[1] }
-	diagnostic_colors["warn"] = { fg = palette.orange[1] }
+	diagnostic_colors["warn"] = { fg = palette.yellow[1] }
 	diagnostic_colors["info"] = { fg = palette.blue[1] }
 	diagnostic_colors["hint"] = { fg = palette.green[1] }
 end

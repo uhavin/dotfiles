@@ -14,7 +14,7 @@ vim.o.laststatus = 3  -- global statusline
 vim.wo.cursorline = true
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.wo.signcolumn = "yes"
+vim.wo.signcolumn = "yes:2"
 
 -- Behaviour
 vim.o.mouse = "a"

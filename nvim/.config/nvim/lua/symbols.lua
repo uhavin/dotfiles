@@ -3,10 +3,10 @@ local _base = {
 	Added = " ",
 	Changed = " ",
 	Deleted = " ",
-	Error = " ",
-	Hint = "硫",
-	Info = " ",
-	Warning = " ",
+	Error = " ",
+	Hint = "",
+	Info = " ",
+	Warning = " ",
 }
 
 local Code = {
