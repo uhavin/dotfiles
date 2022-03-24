@@ -56,9 +56,10 @@ local Fileformat = {
 }
 
 local Git = {
+	Added = _base.Added,
 	Branch = "",
 	Compare = " ",
-	Added = _base.Added,
+    Icon = " ",
 	Modified = _base.Changed,
 	Removed = _base.Deleted,
 }

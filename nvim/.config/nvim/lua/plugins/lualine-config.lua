@@ -65,7 +65,10 @@ require("lualine").setup({
 		lualine_y = {
 			{
 				"branch",
-				icon = symbols.Git.Branch,
+				icon = {
+					symbols.Git.Icon,
+					color = { fg = "#cc6666" },
+				},
 			},
 			{
 				"diff",

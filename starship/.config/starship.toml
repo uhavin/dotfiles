@@ -22,7 +22,7 @@ style = "none"
 [git_branch]
 style = "none"
 format = "[$symbol](red) [$branch]($style)"
-symbol = ""
+symbol = ""
 
 [git_status]
 style = "none"
