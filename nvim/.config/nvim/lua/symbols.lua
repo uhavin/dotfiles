@@ -39,7 +39,7 @@ local Code = {
 }
 
 local OS = {
-	Linux = "",
+	Linux = "",
 	Windows = "",
 	Mac = "",
 }

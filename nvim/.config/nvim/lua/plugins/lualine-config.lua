@@ -1,20 +1,9 @@
 local gps = require("nvim-gps")
 local symbols = require("symbols")
 
-local diagnostic_colors = {} -- will use defaults when empty
-if vim.g.colors_name == "gruvbox-material" then
-	local background = vim.opt.background:get()
-	local configuration = vim.fn["gruvbox_material#get_configuration"]()
-	local palette = vim.fn["gruvbox_material#get_palette"](background, configuration.palette)
-
-	diagnostic_colors["error"] = { fg = palette.red[1] }
-	diagnostic_colors["warn"] = { fg = palette.yellow[1] }
-	diagnostic_colors["info"] = { fg = palette.blue[1] }
-	diagnostic_colors["hint"] = { fg = palette.green[1] }
-end
-
 require("lualine").setup({
 	options = {
+		globalstatus = true,
 		icons_enabled = true,
 		theme = "auto",
 		component_separators = { left = "", right = "" },
@@ -27,7 +16,7 @@ require("lualine").setup({
 			{
 				"mode",
 				fmt = function(str)
-					return str:sub(1, 1)
+					return str:sub(1, 2)
 				end,
 			},
 		},
@@ -40,7 +29,6 @@ require("lualine").setup({
 					info = symbols.Diagnostics.Info,
 					warn = symbols.Diagnostics.Warning,
 				},
-				diagnostics_color = diagnostic_colors,
 			},
 		},
 		lualine_c = {
@@ -48,28 +36,19 @@ require("lualine").setup({
 		},
 		lualine_x = {
 			{
-				"filetype",
-				icon_only = true,
-			},
-			"filename",
-			"encoding",
-			{
-				"fileformat",
-				symbols = {
-					unix = symbols.OS.Linux,
-					dos = symbols.OS.Windows,
-					mac = symbols.OS.Mac,
-				},
-			},
-		},
-		lualine_y = {
-			{
 				"branch",
 				icon = {
 					symbols.Git.Icon,
 					color = { fg = "#cc6666" },
 				},
 			},
+		},
+		lualine_y = {
+			{
+				"filetype",
+				icon_only = true,
+			},
+			"filename",
 			{
 				"diff",
 				-- icon = symbols.Git.Compare,
@@ -81,6 +60,15 @@ require("lualine").setup({
 			},
 		},
 		lualine_z = {
+			{
+				"fileformat",
+				symbols = {
+					unix = symbols.OS.Linux,
+					dos = symbols.OS.Windows,
+					mac = symbols.OS.Mac,
+				},
+			},
+			"encoding",
 			"location",
 		},
 	},
