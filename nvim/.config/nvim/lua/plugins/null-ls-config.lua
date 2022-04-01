@@ -28,5 +28,6 @@ null_ls.setup({
 			extra_args = { "--profile", "black" },
 		}),
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.diagnostics.yamllint.with({ command = run_from_nvim_pyenv("yamllint") }),
 	},
 })
