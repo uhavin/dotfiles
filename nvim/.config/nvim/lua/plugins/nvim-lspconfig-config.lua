@@ -72,7 +72,6 @@ local language_servers = {
 	"tailwindcss",
 	"tsserver",
 	"vuels",
-	"yamlls",
 }
 for _, language_server in ipairs(language_servers) do
 	lspconfig[language_server].setup({
@@ -124,7 +123,15 @@ lspconfig["yamlls"].setup({
 	settings = {
 		yaml = {
 			schemas = {
-				["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose.yaml",
+				["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = {
+					"docker-compose.yml",
+					"docker-compose.*.yml",
+					"docker-compose.yaml",
+					"docker-compose.*.yaml",
+				},
+				["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
+					".gitlab-ci.yml",
+				},
 			},
 		},
 	},
