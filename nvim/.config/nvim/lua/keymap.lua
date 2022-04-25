@@ -21,8 +21,10 @@ inoremap_expr("<Tab>", "v:lua.smart_tab()")
 inoremap_expr("<S-Tab>", "v:lua.smart_shift_tab()")
 
 -- file tree
-nnoremap("<Leader>n", ":NvimTreeToggle<CR>")
-nnoremap("<Leader>.", ":NvimTreeFindFile<CR>")
+nnoremap("<Leader>tn", ":Neotree toggle<CR>")
+nnoremap("<Leader>t.", ":Neotree reveal_file=%<CR>")
+nnoremap("<Leader>tb", ":Neotree buffers toggle right<CR>")
+nnoremap("<Leader>tg", ":Neotree git_statur reveal")
 -- -- fuzzy finder
 nnoremap("<Leader>ff", ":FzfLua files<CR>")
 nnoremap("<Leader>fb", ":FzfLua buffers<CR>")

@@ -60,6 +60,7 @@ require("lualine").setup({
 			},
 		},
 		lualine_z = {
+			"location",
 			{
 				"fileformat",
 				symbols = {
@@ -69,7 +70,6 @@ require("lualine").setup({
 				},
 			},
 			"encoding",
-			"location",
 		},
 	},
 	inactive_sections = {

@@ -46,7 +46,9 @@ local OS = {
 
 local Files = {
 	File = "",
-	Folder = "",
+	Folder = "",
+    FolderOpened = "",
+    FolderEmpty = "",
 }
 
 local Fileformat = {
