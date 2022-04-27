@@ -83,6 +83,19 @@ return require("packer").startup(function(use)
 			require("plugins.cmp-config")
 		end,
 	})
+
+	use({
+		"mfussenegger/nvim-dap",
+		module = { "dap" },
+		requires = {
+			"theHamsta/nvim-dap-virtual-text",
+			"rcarriga/nvim-dap-ui",
+			"mfussenegger/nvim-dap-python",
+		},
+		config = function()
+			require("plugins.nvim-dap-config").setup()
+		end,
+	})
 	use({
 		"SmiteshP/nvim-gps",
 		requires = "nvim-treesitter/nvim-treesitter",
