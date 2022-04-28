@@ -17,7 +17,12 @@ return require("packer").startup(function(use)
 		"wbthomason/packer.nvim",
 		opt = true,
 	})
-
+	use({
+		"klen/nvim-config-local",
+		config = function()
+			require("plugins.nvim-config-local-config")
+		end,
+	})
 	-- Colors
 	-- Treesitter supported, dark and light variant throuhg vim bg=
 	use("savq/melange")
