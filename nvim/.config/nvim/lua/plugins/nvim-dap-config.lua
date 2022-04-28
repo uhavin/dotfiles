@@ -1,4 +1,5 @@
-local HOME = vim.fn.expand("$HOME") local nvim_pyenv_python = HOME .. "/.pyenv/versions/nvim/bin/python" local M = {}
+local M = {}
+local dap, dapui = require("dap"), require("dapui")
 
 local function configure()
 	local dap_breakpoint = {
@@ -31,8 +32,6 @@ local function configure_exts()
 	require("nvim-dap-virtual-text").setup({
 		commented = true,
 	})
-
-	local dap, dapui = require("dap"), require("dapui")
 	dapui.setup({}) -- use default
 	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open()
@@ -45,8 +44,31 @@ local function configure_exts()
 	end
 end
 
+local function setup_python()
+	local HOME = vim.fn.expand("$HOME")
+	dap.adapters.python = {
+		type = "executable",
+		command = HOME .. "/.pyenv/versions/nvim/bin/python",
+		args = { "-m", "debugpy.adapter" },
+	}
+
+	dap.configurations.python = {
+		{
+			-- The first three options are required by nvim-dap
+			type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+			request = "launch",
+			name = "Launch file",
+
+			-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+			program = "${file}", -- This configuration will launch the current file if used.
+			python = HOME .. "/.pyenv/shims/python",
+		},
+	}
+end
+
 local function configure_debuggers()
-	require("dap-python").setup(nvim_pyenv_python, {})
+	setup_python()
 end
 
 function M.setup()
@@ -54,7 +76,5 @@ function M.setup()
 	configure_exts() -- Extensions
 	configure_debuggers() -- Debugger
 end
-
-configure_debuggers()
 
 return M
